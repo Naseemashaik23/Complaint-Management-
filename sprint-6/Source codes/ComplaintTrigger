@@ -1,0 +1,24 @@
+trigger ComplaintTrigger on Complaint__c (
+    before insert,
+    before update,
+    after update
+) {
+
+    if (Trigger.isBefore && Trigger.isInsert) {
+        ComplaintTriggerHandler.beforeInsert(Trigger.new);
+    }
+
+    if (Trigger.isBefore && Trigger.isUpdate) {
+        ComplaintTriggerHandler.beforeUpdate(
+            Trigger.new,
+            Trigger.oldMap
+        );
+    }
+
+    if (Trigger.isAfter && Trigger.isUpdate) {
+        ComplaintTriggerHandler.afterUpdate(
+            Trigger.new,
+            Trigger.oldMap
+        );
+    }
+}
