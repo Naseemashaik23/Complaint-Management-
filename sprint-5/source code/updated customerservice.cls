@@ -1,211 +1,68 @@
-public with sharing class ComplaintService {
+public with sharing class CustomerService {
 
     // ==========================================================
-    // Register Complaint
+    // Register Customer
     // ==========================================================
-    public static String registerComplaint(Complaint__c complaint){
+    public static String registerCustomer(Customerdetails__c customer) {
 
-        String validationResult = validateComplaint(complaint);
+        String validationResult = validateCustomer(customer);
 
-        if(validationResult != 'SUCCESS'){
+        if (validationResult != 'SUCCESS') {
             return validationResult;
         }
 
-        saveComplaint(complaint);
+        saveCustomer(customer);
 
-        return 'Complaint Registered Successfully';
+        return 'Customer Registered Successfully';
     }
 
     // ==========================================================
-    // Validate Complaint
+    // Validate Customer
     // ==========================================================
-    private static String validateComplaint(Complaint__c complaint){
+    private static String validateCustomer(Customerdetails__c customer) {
 
-        if(String.isBlank(complaint.Subject__c)){
-            return 'Complaint Subject is Required';
+        if (String.isBlank(customer.Name)) {
+            return 'Customer Name is Required';
         }
 
-        if(String.isBlank(complaint.Description__c)){
-            return 'Complaint Description is Required';
+        if (String.isBlank(customer.Email__c)) {
+            return 'Customer Email is Required';
         }
 
-        if(String.isBlank(complaint.Status__c)){
-            return 'Complaint Status is Required';
+        if (String.isBlank(customer.Phone__c)) {
+            return 'Customer Phone Number is Required';
         }
 
-        if(String.isBlank(complaint.Priority__c)){
-            return 'Complaint Priority is Required';
-        }
-
-        if(complaint.Customer_detail__c == null){
-            return 'Customer is Required';
+        if (String.isBlank(customer.Address__c)) {
+            return 'Customer Address is Required';
         }
 
         return 'SUCCESS';
     }
 
     // ==========================================================
-    // Save Complaint
+    // Save Customer
     // ==========================================================
-    private static void saveComplaint(Complaint__c complaint){
+    private static void saveCustomer(Customerdetails__c customer) {
 
-        insert complaint;
+        insert customer;
 
     }
 
     // ==========================================================
-    // Update Complaint
+    // Update Customer
     // ==========================================================
-    public static String updateComplaint(Complaint__c complaint){
+    public static String updateCustomer(Customerdetails__c customer) {
 
-        String validationResult = validateComplaint(complaint);
+        String validationResult = validateCustomer(customer);
 
-        if(validationResult != 'SUCCESS'){
+        if (validationResult != 'SUCCESS') {
             return validationResult;
         }
 
-        update complaint;
+        update customer;
 
-        return 'Complaint Updated Successfully';
-    }
-
-    // ==========================================================
-    // Get All Complaints
-    // ==========================================================
-    public static List<Complaint__c> getAllComplaints(){
-
-        return[
-            SELECT Id,
-                   Name,
-                   Subject__c,
-                   Description__c,
-                   Status__c,
-                   Priority__c,
-                   Complaint_Date__c,
-                   Expected_date__c,
-                   Resolution__c,
-                   Customer_detail__c
-            FROM Complaint__c
-            ORDER BY CreatedDate DESC
-        ];
-
-    }
-
-    // ==========================================================
-    // Get Complaints By Status
-    // ==========================================================
-    public static List<Complaint__c> getComplaintsByStatus(String status){
-
-        return[
-            SELECT Id,
-                   Name,
-                   Subject__c,
-                   Status__c,
-                   Priority__c
-            FROM Complaint__c
-            WHERE Status__c = :status
-            ORDER BY CreatedDate DESC
-        ];
-
-    }
-
-    // ==========================================================
-    // Get Complaints By Priority
-    // ==========================================================
-    public static List<Complaint__c> getComplaintsByPriority(String priority){
-
-        return[
-            SELECT Id,
-                   Name,
-                   Subject__c,
-                   Status__c,
-                   Priority__c
-            FROM Complaint__c
-            WHERE Priority__c = :priority
-            ORDER BY CreatedDate DESC
-        ];
-
-    }
-
-    // ==========================================================
-    // Get Complaints By Status And Priority
-    // ==========================================================
-    public static List<Complaint__c> getComplaintsByStatusAndPriority(String status,String priority){
-
-        return[
-            SELECT Id,
-                   Name,
-                   Subject__c,
-                   Status__c,
-                   Priority__c
-            FROM Complaint__c
-            WHERE Status__c = :status
-            AND Priority__c = :priority
-            ORDER BY CreatedDate DESC
-        ];
-
-    }
-
-    // ==========================================================
-    // Get Recent Complaints
-    // ==========================================================
-    public static List<Complaint__c> getRecentComplaints(Integer limitSize){
-
-        return[
-            SELECT Id,
-                   Name,
-                   Subject__c,
-                   Status__c,
-                   Priority__c
-            FROM Complaint__c
-            ORDER BY CreatedDate DESC
-            LIMIT :limitSize
-        ];
-
-    }
-
-    // ==========================================================
-    // Get Complaint Count
-    // ==========================================================
-    public static Integer getComplaintCount(){
-
-        return[
-            SELECT COUNT()
-            FROM Complaint__c
-        ];
-
-    }
-
-    // ==========================================================
-    // Get Open Complaint Count
-    // ==========================================================
-    public static Integer getOpenComplaintCount(){
-
-        return[
-            SELECT COUNT()
-            FROM Complaint__c
-            WHERE Status__c = 'Open'
-        ];
-
-    }
-
-    // ==========================================================
-    // Search Complaints (SOSL)
-    // ==========================================================
-    public static List<List<SObject>> searchComplaints(String keyword){
-
-        return[
-            FIND :keyword
-            IN ALL FIELDS
-            RETURNING Complaint__c(
-                Id,
-                Name,
-                Subject__c,
-                Status__c,
-                Priority__c
-            )
-        ];
-
+        return 'Customer Updated Successfully';
     }
 
 }
