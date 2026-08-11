@@ -104,7 +104,7 @@ Customers button
        ┌─────────────────┐              ┌─────────────────┐
        │Back to Dashboard│              │Back to Customers│
        └─────────────────┘              └─────────────────┘
-📋 All Complaints Page
+## 📋 All Complaints Page
 
 A separate Lightning App Page was created for administrators to view all complaints.
 
@@ -192,7 +192,7 @@ Address
 │                          │
 │ [ Back to Customers ]    │
 └──────────────────────────┘
-🔙 Navigation Workflow
+## 🔙 Navigation Workflow
 
 Navigation between Lightning App Pages was implemented using NavigationMixin.
 
