@@ -61,7 +61,8 @@ The LWC components retrieve Salesforce data through Apex.
 ┌─────────────────────┐
 │ Salesforce Database │
 └─────────────────────┘
-## 🏠 Complaint Management Dashboard
+---
+# 🏠 Complaint Management Dashboard
 
 The Complaint Dashboard acts as the main admin interface.
 
@@ -74,7 +75,7 @@ Recent Complaints
 New Complaint button
 View All Complaints button
 Customers button
-## 📋 Complaint Management Workflow
+# 📋 Complaint Management Workflow
                     ┌───────────────────────┐
                     │   ADMIN DASHBOARD     │
                     └───────────┬───────────┘
@@ -105,6 +106,7 @@ Customers button
        ┌─────────────────┐              ┌─────────────────┐
        │Back to Dashboard│              │Back to Customers│
        └─────────────────┘              └─────────────────┘
+---
 ## 📋 All Complaints Page
 
 A separate Lightning App Page was created for administrators to view all complaints.
@@ -141,6 +143,7 @@ Complaint Dashboard
              │
              ▼
      Back to Dashboard
+---
 ## 👥 Customer Management Page
 
 A separate Customers Lightning App Page was created to display customer records.
@@ -155,6 +158,8 @@ Customer Name
 Email
 Phone
 Address
+
+---
 ## 👥 Customer Workflow
 ┌──────────────────────────┐
 │   Complaint Dashboard    │
@@ -193,6 +198,8 @@ Address
 │                          │
 │ [ Back to Customers ]    │
 └──────────────────────────┘
+
+---
 ## 🔙 Navigation Workflow
 
 Navigation between Lightning App Pages was implemented using NavigationMixin.
@@ -224,6 +231,8 @@ Customer Details
 Back to Customers
     ↓
 Back to Dashboard
+
+---
 ## 🔄 Customer Data Flow
 ┌───────────────────────────┐
 │   Customerdetails__c      │
@@ -260,6 +269,8 @@ Back to Dashboard
 │ Name | Email | Phone      │
 │ Address | View Details    │
 └───────────────────────────┘
+
+---
 ## 🔄 Complaint Data Flow
 ┌───────────────────────────┐
 │       Complaint__c        │
@@ -288,6 +299,7 @@ Back to Dashboard
 │    Complaint Dashboard    │
 │           LWC             │
 └───────────────────────────┘
+---
 ### 🧠 LWC Concepts Practiced
 ## 1. Data Binding
 
