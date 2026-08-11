@@ -31,10 +31,11 @@ Build the first custom Salesforce UI using Lightning Web Components and connect 
 - `NavigationMixin`
 
 ---
-## 🔗 LWC and Apex Communication
+# 🔗 LWC and Apex Communication
 
 The LWC components retrieve Salesforce data through Apex.
 
+```text
 ┌─────────────────────┐
 │        LWC          │
 │   HTML + JS + CSS   │
